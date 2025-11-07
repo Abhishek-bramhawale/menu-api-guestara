@@ -11,6 +11,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+//Routes
+app.use('/api/categories', require('./routes/categoryRoutes'));
+app.use('/api/subcategories', require('./routes/subCategoryRoutes'));
+app.use('/api/items', require('./routes/itemRoutes'));
+app.use('/api/search', require('./routes/searchRoutes'));
+
 app.get('/health',(req, res) =>{
   res.json({ status: 'ok', message: 'server is running' });
 });
@@ -21,6 +28,7 @@ app.get('/', (req, res) =>{
   });
 });
 
+//start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,() =>{
   console.log(`server running on port ${PORT}`);
