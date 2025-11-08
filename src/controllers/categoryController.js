@@ -1,4 +1,5 @@
 const Category=require('../models/Category')
+const mongoose=require('mongoose')
 
 // create new category
 const createCategory=async(req,res,next)=>{
@@ -19,7 +20,7 @@ const createCategory=async(req,res,next)=>{
       data:category
     }) 
   }catch(err){
-    nex(err) 
+    next(err) 
   }
 }
 
@@ -82,7 +83,7 @@ const updateCategory=async(req,res,next)=>{
 
     // update fields if provided
     if(name!==undefined) category.name=name
-    if(image!==undefined) category.img=image 
+    if(image!==undefined) category.image=image 
     if(description!==undefined) category.description=description
     if(taxApplicability!==undefined) category.taxApplicability=taxApplicability
     if(tax!==undefined) category.tax=tax

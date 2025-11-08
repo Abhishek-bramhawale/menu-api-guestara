@@ -7,7 +7,7 @@ const{
  getSubCategoriesByCategory,
  getSubCategoryByIdentifier,
  updateSubCategory
-} = require('/controllers/subCategoryController')
+} = require('../controllers/subcategoryController')
 
 router.post('/',  createSubCategory )  //create new sub-category
 

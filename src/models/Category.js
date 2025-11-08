@@ -36,6 +36,5 @@ const categorySchema=new mongoose.Schema(
   {timestamps:true} // adds createdAt& updatedAt
 );
 
-categorySchema.index({name:1}); // faster search
 
 module.exports = mongoose.model('Category',categorySchema); // export

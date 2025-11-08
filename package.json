@@ -2,8 +2,10 @@
   "name": "guestara-github",
   "version": "1.0.0",
   "description": "Node.js backend server for menu management Apis with categories, sub categories, and items",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

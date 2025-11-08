@@ -1,0 +1,548 @@
+{
+	"info": {
+		"_postman_id": "guestara-menu-api-collection",
+		"name": "Guestara Menu Management API",
+		"description": "Complete API collection for Menu Management System with Categories, SubCategories, and Items",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health & Root",
+			"item": [
+				{
+					"name": "Root Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Get API information"
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Check if server is running"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Beverages\",\n  \"image\": \"https://example.com/beverages.jpg\",\n  \"description\": \"All types of drinks and beverages\",\n  \"taxApplicability\": true,\n  \"tax\": 5,\n  \"taxType\": \"GST\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						},
+						"description": "Create a new category"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						},
+						"description": "Get all categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/:identifier",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								":identifier"
+							],
+							"variable": [
+								{
+									"key": "identifier",
+									"value": "CATEGORY_ID_OR_NAME",
+									"description": "Category ID or name"
+								}
+							]
+						},
+						"description": "Get category by ID or name"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Beverages\",\n  \"image\": \"https://example.com/updated-beverages.jpg\",\n  \"description\": \"Updated description for beverages\",\n  \"taxApplicability\": true,\n  \"tax\": 8,\n  \"taxType\": \"VAT\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "CATEGORY_ID",
+									"description": "Category ID"
+								}
+							]
+						},
+						"description": "Update an existing category"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubCategories",
+			"item": [
+				{
+					"name": "Create SubCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Cold Drinks\",\n  \"image\": \"https://example.com/cold-drinks.jpg\",\n  \"description\": \"All cold beverages\",\n  \"category\": \"CATEGORY_ID_HERE\",\n  \"taxApplicability\": true,\n  \"tax\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/subcategories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"subcategories"
+							]
+						},
+						"description": "Create a new subcategory. Category ID is required."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All SubCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/subcategories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"subcategories"
+							]
+						},
+						"description": "Get all subcategories"
+					},
+					"response": []
+				},
+				{
+					"name": "Get SubCategories by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/subcategories/category/:categoryId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"subcategories",
+								"category",
+								":categoryId"
+							],
+							"variable": [
+								{
+									"key": "categoryId",
+									"value": "CATEGORY_ID",
+									"description": "Category ID"
+								}
+							]
+						},
+						"description": "Get all subcategories under a specific category"
+					},
+					"response": []
+				},
+				{
+					"name": "Get SubCategory by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/subcategories/:identifier",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"subcategories",
+								":identifier"
+							],
+							"variable": [
+								{
+									"key": "identifier",
+									"value": "SUBCATEGORY_ID_OR_NAME",
+									"description": "SubCategory ID or name"
+								}
+							]
+						},
+						"description": "Get subcategory by ID or name"
+					},
+					"response": []
+				},
+				{
+					"name": "Update SubCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Cold Drinks\",\n  \"image\": \"https://example.com/updated-cold-drinks.jpg\",\n  \"description\": \"Updated description\",\n  \"category\": \"CATEGORY_ID_HERE\",\n  \"taxApplicability\": false,\n  \"tax\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/subcategories/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"subcategories",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "SUBCATEGORY_ID",
+									"description": "SubCategory ID"
+								}
+							]
+						},
+						"description": "Update an existing subcategory"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Create Item (with Category)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Coca Cola\",\n  \"image\": \"https://example.com/coca-cola.jpg\",\n  \"description\": \"Classic cola drink\",\n  \"category\": \"CATEGORY_ID_HERE\",\n  \"subCategory\": null,\n  \"taxApplicability\": true,\n  \"tax\": 5,\n  \"baseAmount\": 50,\n  \"discount\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						},
+						"description": "Create a new item. Must belong to either category or subCategory."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Item (with SubCategory)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pepsi\",\n  \"image\": \"https://example.com/pepsi.jpg\",\n  \"description\": \"Pepsi cola drink\",\n  \"category\": null,\n  \"subCategory\": \"SUBCATEGORY_ID_HERE\",\n  \"taxApplicability\": true,\n  \"tax\": 5,\n  \"baseAmount\": 45,\n  \"discount\": 0\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						},
+						"description": "Create a new item with subCategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						},
+						"description": "Get all items"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Items by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/items/category/:categoryId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items",
+								"category",
+								":categoryId"
+							],
+							"variable": [
+								{
+									"key": "categoryId",
+									"value": "CATEGORY_ID",
+									"description": "Category ID"
+								}
+							]
+						},
+						"description": "Get all items under a specific category"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Items by SubCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/items/subcategory/:subCategoryId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items",
+								"subcategory",
+								":subCategoryId"
+							],
+							"variable": [
+								{
+									"key": "subCategoryId",
+									"value": "SUBCATEGORY_ID",
+									"description": "SubCategory ID"
+								}
+							]
+						},
+						"description": "Get all items under a specific subcategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/items/:identifier",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items",
+								":identifier"
+							],
+							"variable": [
+								{
+									"key": "identifier",
+									"value": "ITEM_ID_OR_NAME",
+									"description": "Item ID or name"
+								}
+							]
+						},
+						"description": "Get item by ID or name"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Coca Cola\",\n  \"image\": \"https://example.com/updated-coca-cola.jpg\",\n  \"description\": \"Updated description\",\n  \"category\": \"CATEGORY_ID_HERE\",\n  \"subCategory\": null,\n  \"taxApplicability\": false,\n  \"tax\": 0,\n  \"baseAmount\": 55,\n  \"discount\": 10\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/items/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ITEM_ID",
+									"description": "Item ID"
+								}
+							]
+						},
+						"description": "Update an existing item"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"item": [
+				{
+					"name": "Search Items by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/search/items?name=cola",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"search",
+								"items"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "cola",
+									"description": "Search term for item name"
+								}
+							]
+						},
+						"description": "Search items by name (case-insensitive partial match)"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
+

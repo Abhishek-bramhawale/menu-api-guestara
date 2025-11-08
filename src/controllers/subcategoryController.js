@@ -1,5 +1,6 @@
 const SubCategory=require('../models/SubCategory')
 const Category=require('../models/Category')
+const mongoose=require('mongoose')
 
 // create new subcategory
 const createSubCategory=async(req,res,next)=>{
@@ -132,7 +133,7 @@ const updateSubCategory=async(req,res,next)=>{
     }
 
     if(name!==undefined) subCategory.name=name
-    if(image!==undefined) subCategory.img=image 
+    if(image!==undefined) subCategory.image=image 
     if(description!==undefined) subCategory.description=description
     if(category!==undefined) subCategory.category=category
     if(taxApplicability!==undefined) subCategory.taxApplicability=taxApplicability
